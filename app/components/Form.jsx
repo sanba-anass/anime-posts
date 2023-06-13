@@ -8,6 +8,7 @@ async function getBase64(externalUrl) {
 		responseType: "arraybuffer",
 	});
 	const buffer = Buffer.from(response.data, "base64");
+	console.log(response.data);
 	console.log(buffer);
 
 	const { _id } = await client.assets.upload("image", buffer);
