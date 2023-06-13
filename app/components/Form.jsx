@@ -10,7 +10,7 @@ async function getBase64(externalUrl) {
 	const buffer = Buffer.from(response.data, "base64");
 	console.log(buffer);
 
-	const { _id } = await client.assets.upload("image", buffer, {});
+	const { _id } = await client.assets.upload("image", buffer);
 
 	return _id;
 }
@@ -18,8 +18,6 @@ function Form() {
 	const [enteredTitle, setEnteredTitle] = useState("");
 	const [enteredUrl, setEnteredUrl] = useState("");
 	const ctx = useContext(PostsContext);
-	const projectId = "mgj58rtv";
-	const datasetName = "production";
 	const createPost = async (event) => {
 		event.preventDefault();
 
