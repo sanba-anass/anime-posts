@@ -6,6 +6,7 @@ import axios from "axios";
 async function getBase64(externalUrl) {
 	const response = await axios.get(externalUrl, {
 		responseType: "arraybuffer",
+		timeout: 60000,
 	});
 
 	const arrayBuffer = response.data;
