@@ -19,7 +19,7 @@ const Posts = () => {
 		async function fetchPosts() {
 			setIsLoading(true);
 			const query = `
-		*[_type == "post"] | order(_createdAt desc) {
+		  *[_type == "post"] | order(_createdAt desc) {
 		   title,
 		   _id,
 		   image {

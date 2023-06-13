@@ -7,7 +7,7 @@ async function getBase64(externalUrl) {
 	const response = await axios.get(externalUrl, {
 		responseType: "arraybuffer",
 	});
-	const buffer = Buffer.from(response.data, "utf-8");
+	const buffer = Buffer.from(response.data, "base64");
 	console.log(buffer);
 
 	const { _id } = await client.assets.upload("image", buffer, {});
