@@ -10,11 +10,8 @@ async function getBase64(externalUrl) {
 
 	const arrayBuffer = response.data;
 	const uint8Array = new Uint8Array(arrayBuffer);
-
-	const { _id } = await client.assets.upload(
-		"image",
-		new Blob([uint8Array.buffer])
-	);
+	//new Blob([uint8Array.buffer]
+	const { _id } = await client.assets.upload("image", uint8Array);
 
 	return _id;
 }
@@ -31,7 +28,7 @@ function Form() {
 
 		ctx.setIsLoading(true);
 
-		const _id = await getBase64(enteredUrl);
+		const _id = await getBase64("/Naruto.webp");
 
 		const createdAt = new Date(Date.now());
 		const body = {
