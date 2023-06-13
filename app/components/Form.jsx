@@ -10,8 +10,11 @@ async function getBase64(externalUrl) {
 
 	const arrayBuffer = response.data;
 	const uint8Array = new Uint8Array(arrayBuffer);
-	const content = new ImageData(uint8Array, 200);
-	const { _id } = await client.assets.upload("image", content);
+
+	const { _id } = await client.assets.upload(
+		"image",
+		new Blob([uint8Array.buffer], { type: "image/jpg" })
+	);
 
 	return _id;
 }
