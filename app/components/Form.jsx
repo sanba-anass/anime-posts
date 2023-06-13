@@ -4,14 +4,23 @@ import { PostsContext } from "../../context/store";
 import { client } from "../../sanityClient";
 import axios from "axios";
 async function getBase64(externalUrl) {
-	const response = await axios.get(externalUrl, {
-		responseType: "arraybuffer",
-		timeout: 60000,
-	});
+	const response = await axios
+		.get(externalUrl, {
+			responseType: "arraybuffer",
+			timeout: 60000,
+		})
+		.catch((error) => {
+			console.log(JSON.stringify(error))
+			if (error.response) {
+				console.log(error.response.data);
+				console.log(error.response.status);
+				console.log(error.response.headers);
+			}
+		});
 
 	const arrayBuffer = response.data;
 	console.log(response.status);
-	console.log(response.statusText)
+	console.log(response.statusText);
 	const uint8Array = new Uint8Array(arrayBuffer);
 	//
 	const { _id } = await client.assets.upload(
