@@ -7,10 +7,16 @@ async function getBase64(externalUrl) {
 	const response = await axios
 		.get(externalUrl, {
 			responseType: "arraybuffer",
-			timeout: 60000,
+			headers: {
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods":
+					"GET, POST, OPTIONS, PUT, PATCH, DELETE",
+				"Access-Control-Allow-Headers":
+					"x-access-token, Origin, X-Requested-With, Content-Type, Accept",
+			},
 		})
 		.catch((error) => {
-			console.log(JSON.stringify(error))
+			console.log(JSON.stringify(error));
 			if (error.response) {
 				console.log(error.response.data);
 				console.log(error.response.status);
