@@ -72,7 +72,6 @@ function Post({ title, imageUrl, id }: { title: any; imageUrl: any; id: any }) {
 					width={"350"}
 					height={"500"}
 					quality={100}
-					unoptimized
 				/>
 			</Link>
 		</div>
